@@ -2,25 +2,94 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #002b22;
+  --pine-green: #002b22;
+  --vibrant-orange: #ff9e00;
+  --teal: #00a88e;
+  --soft-grey: #f8f9fa;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--pine-green);
+  --color-accent: var(--vibrant-orange);
+  --color-secondary: var(--teal);
+  --color-bg-soft: var(--soft-grey);
+  
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  
+  --shadow-premium: 0 10px 30px -5px rgba(0, 43, 34, 0.1);
+  --shadow-hover: 0 20px 40px -10px rgba(0, 43, 34, 0.2);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .hero-overlay {
+    background: linear-gradient(rgba(0, 43, 34, 0.7), rgba(0, 43, 34, 0.7));
+  }
+  
+  .card-shadow {
+    box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.08);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.mask-edges {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+@keyframes custom-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-custom-marquee {
+  animation: custom-marquee 15s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+@keyframes custom-marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-custom-marquee-reverse {
+  animation: custom-marquee-reverse 15s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+ @media print {
+  @page { size: A4 portrait; margin: 0 !important; }
+  * { 
+    transform: none !important; 
+    animation: none !important;
+  }
+  html, body {
+    height: 100vh !important;
+    width: 100vw !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body * { visibility: hidden !important; border-radius: 0 !important; }
+  #svb-print-hub, #svb-print-hub * { visibility: visible !important; }
 }

@@ -2,12 +2,18 @@
 import React, { useState, useEffect } from "react";
 import { Download, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function PwaInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
+    // Only show if the app is NOT running in Standalone (PWA) mode!
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone;
+    if (isStandalone) return;
+
     // Ensure the prompt always visually appears for the user (even on testing http or iOS)
     const timer = setTimeout(() => setIsVisible(true), 2500);
 
@@ -38,34 +44,37 @@ export default function PwaInstallPrompt() {
     }
   };
 
-  if (!isVisible) return null;
+  // ONLY show on main website root (/), nowhere else
+  if (pathname !== '/' || !isVisible) return null;
 
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ y: 100, opacity: 0 }}
+        initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 100, opacity: 0 }}
-        className="fixed bottom-4 left-4 right-4 z-[99999] lg:hidden pointer-events-none"
+        exit={{ y: 50, opacity: 0 }}
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[99999] pointer-events-none w-[90%] max-w-[340px]"
       >
-        <div className="bg-slate-900 border border-slate-700 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-4 flex items-center justify-between pointer-events-auto">
+        <div className="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.3)] p-2 pl-3 flex items-center justify-between pointer-events-auto">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black text-xs shadow-lg border border-indigo-500/50">SVB</div>
-            <div className="flex flex-col">
-              <span className="text-sm font-black text-white leading-none mb-1">Install SVB App</span>
-              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Fast & Native Experience</span>
-            </div>
+             <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center overflow-hidden border border-slate-200">
+                <img src="/logo.png" alt="App Logo" className="w-5 h-5 object-contain" />
+             </div>
+             <div className="flex flex-col justify-center">
+                <span className="text-[14px] font-black text-white leading-none tracking-tight">SVB App</span>
+             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={handleInstallClick} 
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-[10px] font-black uppercase tracking-widest transition-colors shadow-lg shadow-indigo-600/30 flex items-center gap-2"
-            >
-              <Download size={14} /> Install
-            </button>
-            <button onClick={() => setIsVisible(false)} className="text-slate-500 hover:text-white transition-colors bg-slate-800 p-1.5 rounded-lg border border-slate-700">
-              <X size={14} />
-            </button>
+          
+          <div className="flex items-center gap-1.5 pr-1">
+             <button 
+               onClick={handleInstallClick} 
+               className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full text-[10px] font-black uppercase tracking-widest transition-colors flex items-center gap-1.5"
+             >
+                <Download size={12} /> Install
+             </button>
+             <button onClick={() => setIsVisible(false)} className="w-7 h-7 flex items-center justify-center text-slate-400 hover:text-white rounded-full transition-colors bg-slate-800">
+                <X size={12} strokeWidth={3} />
+             </button>
           </div>
         </div>
       </motion.div>

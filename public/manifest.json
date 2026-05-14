@@ -1,9 +1,9 @@
 {
-  "name": "Sanskar Vidya Bhawan",
+  "name": "Sanskar Vidya Bhavan",
   "short_name": "SVB",
   "description": "TechnoDhaam Official School Portal",
-  "start_url": "/",
-  "id": "/",
+  "start_url": "/?v=2.0",
+  "id": "/?v=2.0",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",

@@ -28,7 +28,7 @@ export default function AcademicsPage() {
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
           <div className="flex items-center gap-3 text-accent mb-4">
             <div className="h-[2px] w-6 lg:w-10 bg-accent" />
-            <span className="font-black uppercase tracking-[.2em] text-[10px] lg:text-sm">Sanskar Vidya Bhawan</span>
+            <span className="font-black uppercase tracking-[.2em] text-[10px] lg:text-sm">Sanskar Vidya Bhavan</span>
             <div className="h-[2px] w-6 lg:w-10 bg-accent" />
           </div>
           <h1 className="text-4xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-tight drop-shadow-xl">
@@ -137,6 +137,53 @@ export default function AcademicsPage() {
         </div>
       </section>
 
+      {/* 3.5 Medium & Class Information */}
+      <section className="py-8 lg:py-12 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Hindi Medium Card */}
+            <div className="bg-gradient-to-br from-orange-50 to-white p-5 rounded-2xl border border-orange-100 shadow-sm group hover:shadow-md transition-all duration-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-orange-500 text-white rounded-xl flex items-center justify-center shadow-md shadow-orange-200 group-hover:rotate-6 transition-transform">
+                  <Languages size={24} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-black text-primary uppercase tracking-tighter">Hindi Medium</h3>
+                  <p className="text-orange-600 font-black text-[10px] uppercase tracking-widest">RBSE Curriculum</p>
+                </div>
+              </div>
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-2xl font-black text-primary">1st to 10th</span>
+                <span className="text-primary/40 font-bold uppercase text-[10px]">Class</span>
+              </div>
+              <p className="text-primary/60 text-xs font-medium leading-relaxed">
+                Complete education in Hindi medium following the Rajasthan Board syllabus with a focus on deep conceptual understanding and cultural values.
+              </p>
+            </div>
+
+            {/* English Medium Card */}
+            <div className="bg-gradient-to-br from-sky-50 to-white p-5 rounded-2xl border border-sky-100 shadow-sm group hover:shadow-md transition-all duration-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-sky-500 text-white rounded-xl flex items-center justify-center shadow-md shadow-sky-200 group-hover:-rotate-6 transition-transform">
+                  <BookOpen size={24} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-black text-primary uppercase tracking-tighter">English Medium</h3>
+                  <p className="text-sky-600 font-black text-[10px] uppercase tracking-widest">Modern Curriculum</p>
+                </div>
+              </div>
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-2xl font-black text-primary">Nursery to 8th</span>
+                <span className="text-primary/40 font-bold uppercase text-[10px]">Class</span>
+              </div>
+              <p className="text-primary/60 text-xs font-medium leading-relaxed">
+                High-quality English medium education starting from foundation years to middle school, ensuring global fluency and academic excellence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 4. Teaching Methodology */}
       <section className="py-12 lg:py-20 max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -152,9 +199,9 @@ export default function AcademicsPage() {
             <div className="grid grid-cols-4 gap-2 mt-4">
               {[
                 { title: "Smart Class", desc: "Interactive digital boards.", icon: MonitorPlay },
-                { title: "Labs", desc: "Hands-on science experiments.", icon: Microscope },
                 { title: "Attention", desc: "Low student-teacher ratio.", icon: Users },
                 { title: "Concepts", desc: "Understanding beyond rote.", icon: BookOpen },
+                { title: "Holistic Growth", desc: "Overall development focus.", icon: CheckCircle2 },
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center text-center gap-1 bg-white p-2 rounded-xl shadow-sm border border-primary/5 hover:-translate-y-1 transition-transform">
                   <div className="w-7 h-7 lg:w-10 lg:h-10 bg-primary/5 text-primary rounded-lg flex items-center justify-center mb-1">

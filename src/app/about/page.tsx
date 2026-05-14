@@ -29,7 +29,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/about1.jpg"
-            alt="Sanskar Vidya Bhawan Campus"
+            alt="Sanskar Vidya Bhavan Campus"
             fill
             className="object-cover object-center"
             priority
@@ -39,14 +39,31 @@ export default function AboutPage() {
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
           <div className="px-4 py-1.5 bg-accent/20 border border-accent/50 rounded-full text-accent text-[10px] lg:text-xs font-black uppercase tracking-widest mb-4 md:mb-6 backdrop-blur-md">
-            Established in 2023
+            Established in 2009
           </div>
           <h1 className="text-4xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-tight drop-shadow-2xl">
-            About <span className="text-accent underline decoration-white/20 underline-offset-8">Sanskar Vidya Bhawan</span>
+            About <span className="text-accent underline decoration-white/20 underline-offset-8">Sanskar Vidya Bhavan</span>
           </h1>
           <p className="mt-4 lg:mt-6 text-white/80 font-medium max-w-2xl text-xs lg:text-lg leading-relaxed">
             Dedicated to academic excellence and cultural integrity.
           </p>
+        </div>
+      </section>
+      
+      {/* Build Images Row */}
+      <section className="bg-white py-8 border-b border-primary/5">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-lg border border-primary/10">
+              <Image src="/build1.jpeg" alt="School Building 1" fill className="object-cover hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-lg border border-primary/10">
+              <Image src="/build2.jpeg" alt="School Building 2" fill className="object-cover hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-lg border border-primary/10">
+              <Image src="/build3.jpeg" alt="School Building 3" fill className="object-cover hover:scale-110 transition-transform duration-700" />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -61,7 +78,7 @@ export default function AboutPage() {
               Our Education System <span className="text-accent">Inspires You More.</span>
             </h2>
             <p className="text-primary/70 text-sm lg:text-base font-medium leading-relaxed mb-8">
-              Sanskar Vidya Bhawan Bhinmal follows the Rajasthan Board (RBSE) syllabus, but we provide a world-class environment for both English and Hindi mediums. We are committed to fostering academic excellence, equipping students with essential global skills and deeply rooted values.
+              Sanskar Vidya Bhavan Bhinmal follows the Rajasthan Board (RBSE) syllabus, but we provide a world-class environment for both English and Hindi mediums. We are committed to fostering academic excellence, equipping students with essential global skills and deeply rooted values.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 lg:gap-12 pl-4 border-l-4 border-accent">
@@ -73,9 +90,9 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col">
                 <h4 className="text-primary font-black text-lg mb-1 flex items-center gap-2">
-                  <Globe2 className="text-accent w-5 h-5 flex-shrink-0" /> International Hubs
+                  <Globe2 className="text-accent w-5 h-5 flex-shrink-0" /> Cultural Ethos
                 </h4>
-                <p className="text-primary/60 text-xs font-medium">Equipping students with global skills and values.</p>
+                <p className="text-primary/60 text-xs font-medium">Equipping students with values and ethics.</p>
               </div>
             </div>
 
@@ -90,35 +107,6 @@ export default function AboutPage() {
                 <div className="flex flex-col">
                   <span className="text-[8px] lg:text-[10px] font-black uppercase text-primary/40 tracking-widest">Call Now</span>
                   <a href="tel:+919784802941" className="text-primary font-black text-xs lg:text-sm hover:text-accent transition-colors whitespace-nowrap">+91 97848 02941</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Images & Stats Grid */}
-          <div className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex flex-col gap-4">
-                <div className="bg-white rounded-3xl p-6 shadow-xl border border-primary/5 flex flex-col items-center justify-center text-center aspect-square transform hover:scale-105 transition-transform">
-                   <div className="text-4xl lg:text-5xl font-black text-accent mb-2">2023</div>
-                   <p className="text-primary font-black text-xs uppercase tracking-wider">Years of Quality Service</p>
-                </div>
-                <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-xl">
-                  <Image src="/about2.jpg" alt="Students Activity" fill className="object-cover" />
-                  <div className="absolute inset-0 bg-primary/40 flex items-end p-4">
-                     <span className="text-white font-black text-xs uppercase tracking-widest backdrop-blur-sm bg-white/10 px-3 py-1 rounded-full">Campus Life</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col gap-4 lg:mt-12">
-                <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-xl">
-                  <Image src="/about3.jpg" alt="Campus Life" fill className="object-cover" />
-                  <div className="absolute inset-0 bg-primary/40 flex items-end p-4">
-                     <span className="text-white font-black text-xs uppercase tracking-widest backdrop-blur-sm bg-white/10 px-3 py-1 rounded-full">Students Activity</span>
-                  </div>
-                </div>
-                <div className="bg-primary rounded-3xl p-6 shadow-xl text-center aspect-square flex items-center justify-center transform hover:scale-105 transition-transform">
-                   <Building2 className="w-16 h-16 text-accent opacity-50" />
                 </div>
               </div>
             </div>
@@ -166,11 +154,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. Principal's Message */}
+      {/* 4. Director's Message */}
       <section className="py-10 lg:py-16 max-w-7xl mx-auto px-4 overflow-hidden">
         <h3 className="text-accent font-black text-xs uppercase tracking-widest mb-1 text-center">Leadership Message</h3>
         <h2 className="text-2xl lg:text-4xl font-black text-primary uppercase tracking-tighter leading-tight mb-8 lg:mb-12 text-center">
-          Words from <span className="text-accent">our Principal.</span>
+          Words from <span className="text-accent">our Director.</span>
         </h2>
 
         <div className="bg-white rounded-3xl border border-primary/5 shadow-xl p-5 lg:p-8 relative">
@@ -198,7 +186,7 @@ export default function AboutPage() {
               <div className="lg:col-span-9 relative z-10 flex flex-col justify-center text-center lg:text-left">
                  <div className="mb-4">
                    <p className="text-primary/80 font-medium text-xs lg:text-sm leading-relaxed italic mb-3">
-                     "Education is not just about books, but about the holistic development of an individual. At Sanskar Vidya Bhawan, we strive to create an environment where every child feels valued and inspired to learn."
+                     "Education is not just about books, but about the holistic development of an individual. At Sanskar Vidya Bhavan, we strive to create an environment where every child feels valued and inspired to learn."
                    </p>
                    {/* Hindi section */}
                    <p className="text-primary/70 font-medium text-xs lg:text-sm leading-relaxed lg:pl-3 lg:border-l-[3px] lg:border-accent">
@@ -208,9 +196,9 @@ export default function AboutPage() {
                  
                  <div>
                    <h4 className="text-lg lg:text-xl font-black text-primary tracking-tight">JR GAUR</h4>
-                   <p className="text-accent font-black text-[10px] uppercase tracking-widest mt-0.5">
-                     Managing Director & Principal
-                   </p>
+                    <p className="text-accent font-black text-[10px] uppercase tracking-widest mt-0.5">
+                      Director
+                    </p>
                  </div>
               </div>
            </div>
@@ -265,6 +253,51 @@ export default function AboutPage() {
               </div>
 
            </div>
+        </div>
+      </section>
+
+      {/* 6. Our Legend - Teachers Section */}
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4">
+        <div className="text-center mb-12 lg:mb-16">
+          <h3 className="text-accent font-black text-xs uppercase tracking-widest mb-2">Our Pillars</h3>
+          <h2 className="text-3xl lg:text-5xl font-black text-primary uppercase tracking-tighter text-center">
+            Our <span className="text-accent underline decoration-primary/10 underline-offset-8">Legend</span> Teachers
+          </h2>
+          <p className="mt-4 text-primary/60 text-xs lg:text-sm max-w-2xl mx-auto font-medium text-center">
+            Meet the dedicated educators who are shaping the future of our students with passion and expertise.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-8">
+          {[
+            { name: "Anita Sharma", subject: "Hindi" },
+            { name: "Sunita Gupta", subject: "English" },
+            { name: "Priyanka Verma", subject: "Science" },
+            { name: "Meenakshi Jain", subject: "Math" },
+            { name: "Rekha Choudhary", subject: "EVS" },
+            { name: "Pooja Singh", subject: "Social Science" },
+            { name: "Kavita Raj", subject: "Hindi" },
+            { name: "Rajesh Kumar", subject: "Math" },
+            { name: "Suresh Patel", subject: "English" },
+            { name: "Vikram Singh", subject: "Social Science" }
+          ].map((teacher, i) => (
+            <div key={i} className="group bg-white rounded-xl lg:rounded-2xl overflow-hidden shadow-sm border border-primary/5 hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+              <div className="relative aspect-square overflow-hidden bg-slate-100">
+                <img 
+                  src={`https://api.dicebear.com/7.x/notionists/svg?seed=${teacher.name}&backgroundColor=transparent`}
+                  alt={teacher.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <div className="p-2 lg:p-4 text-center">
+                <h4 className="text-[10px] lg:text-base font-black text-primary leading-tight mb-1 truncate">{teacher.name}</h4>
+                <div className="inline-block px-1.5 py-0.5 lg:px-3 lg:py-1 bg-accent/10 rounded-full">
+                  <span className="text-[7px] lg:text-[10px] font-black text-accent uppercase tracking-widest">{teacher.subject}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

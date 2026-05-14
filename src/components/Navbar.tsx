@@ -43,7 +43,7 @@ export default function Navbar() {
             </div>
             <div className="flex items-center gap-2">
               <Mail size={14} className="text-accent" />
-              <span>sanskarvidhyabhawan1986@gmail.com</span>
+              <span>sanskarvidhyabhavan1986@gmail.com</span>
             </div>
           </div>
           <div className="flex gap-6 items-center">
@@ -51,8 +51,6 @@ export default function Navbar() {
                 <span className="hover:text-accent cursor-pointer transition-colors">Facebook</span>
                 <span className="hover:text-accent cursor-pointer transition-colors">Instagram</span>
              </div>
-             <Link href="/dashboard/admin" className="text-accent font-black hover:text-white transition-colors">Admin ERP</Link>
-             <span className="text-white/20">|</span>
              <Link href="/login" className="hover:text-accent transition-colors">Portal Login</Link>
           </div>
         </div>
@@ -69,18 +67,18 @@ export default function Navbar() {
             <div className="relative w-14 h-14 bg-white rounded-lg flex items-center justify-center p-1 group-hover:scale-105 transition-transform">
               <Image 
                 src="/logo.png" 
-                alt="Sanskar Vidya Bhawan Logo" 
+                alt="Sanskar Vidya Bhavan Logo" 
                 width={56} 
                 height={56}
                 className="object-contain"
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-heading font-black text-2xl tracking-tighter text-white group-hover:text-accent transition-colors">
-                SANSKAR VIDYA
+              <span className="font-heading font-black text-[22px] lg:text-2xl tracking-tighter text-white group-hover:text-accent transition-colors whitespace-nowrap">
+                SANSKAR VIDYA BHAVAN
               </span>
-              <span className="font-bold text-sm tracking-[.1em] uppercase text-accent">
-                BHAWAN
+              <span className="font-bold text-xs lg:text-sm tracking-[.1em] uppercase text-accent">
+                BHINMAL
               </span>
             </div>
           </Link>
@@ -131,7 +129,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Image src="/logo.png" alt="Logo" width={40} height={40} />
             <span className="font-heading font-black text-primary uppercase tracking-tighter text-lg leading-none">
-              Sanskar<br/>Vidya Bhawan
+              Sanskar Vidya Bhavan<br/>Bhinmal
             </span>
           </div>
           <button 
@@ -150,14 +148,7 @@ export default function Navbar() {
             Secure Portals
           </h3>
           
-          {/* Admin ERP */}
-          <Link href="/admin" onClick={() => setIsOpen(false)} className="bg-primary text-white p-4 rounded-2xl flex items-center justify-between group shadow-xl transition-all">
-              <div className="flex items-center gap-4">
-                  <div className="bg-white/10 p-2.5 rounded-xl text-accent"><ShieldCheck size={22} /></div>
-                  <span className="font-black text-base uppercase tracking-wide">Admin ERP</span>
-              </div>
-              <ArrowRight className="text-accent group-hover:translate-x-1 transition-transform" />
-          </Link>
+
 
           {/* Teacher Portal */}
           <Link href="/dashboard/teacher" onClick={() => setIsOpen(false)} className="bg-white border border-primary/10 text-primary p-4 rounded-2xl flex items-center justify-between group shadow-sm hover:shadow-md hover:border-primary/20 transition-all">

@@ -53,14 +53,11 @@ const class5Achievers = [
   { name: "वंश कुमार", score: "A Grade", image: "/students/5_5.jpg" },
 ];
 
-// Helper to multiply the arrays for a completely safe, massive seamless infinite loop on ultra-wide screens.
-// We MUST multiply by an EVEN number (e.g., 4x or 10x) so `translateX(-50%)` jumps exactly at the correct duplicate point.
-const infiniteClass10 = [...class10Achievers, ...class10Achievers, ...class10Achievers, ...class10Achievers]; // 4x (44 items)
-const infiniteClass8 = [...class8Achievers, ...class8Achievers, ...class8Achievers, ...class8Achievers]; // 4x (48 items)
-const infiniteClass5 = [
-  ...class5Achievers, ...class5Achievers, ...class5Achievers, ...class5Achievers, ...class5Achievers, 
-  ...class5Achievers, ...class5Achievers, ...class5Achievers, ...class5Achievers, ...class5Achievers
-]; // 10x (50 items)
+// We MUST multiply by an EVEN number so `translateX(-50%)` jumps exactly at the correct duplicate point.
+// Halved the loop counts to radically improve mobile DOM performance and prevent lag.
+const infiniteClass10 = [...class10Achievers, ...class10Achievers]; // 2x
+const infiniteClass8 = [...class8Achievers, ...class8Achievers]; // 2x
+const infiniteClass5 = [...class5Achievers, ...class5Achievers, ...class5Achievers, ...class5Achievers]; // 4x
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -78,7 +75,10 @@ export default function Home() {
       <Navbar />
 
       {/* Spacer for Navbar */}
-      <div className="h-16 lg:h-24" />
+      <div className="h-[88px] lg:h-[122px] w-full" />
+
+      {/* Live Notice Ticker */}
+      <Ticker />
 
       {/* ... [Hero Section remains unchanged] ... */}
       <section className="relative min-h-[70vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden pt-20 lg:pt-0">
@@ -86,7 +86,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero.jpg"
-            alt="Sanskar Vidya Bhawan Campus"
+            alt="Sanskar Vidya Bhavan Campus"
             fill
             className="object-cover object-[75%_center] lg:object-top"
             priority
@@ -97,7 +97,7 @@ export default function Home() {
         {/* MOBILE ONLY: Absolute Top Welcome Line */}
         <div className="absolute top-8 left-0 right-0 z-20 flex lg:hidden items-center justify-center gap-2 text-accent px-4 w-full">
           <div className="h-[2px] w-4 bg-accent" />
-          <span className="font-black uppercase tracking-wider text-[9px] whitespace-nowrap shadow-black drop-shadow-xl">Welcome to Sanskar Vidya Bhawan</span>
+          <span className="font-black uppercase tracking-wider text-[9px] whitespace-nowrap shadow-black drop-shadow-xl">Welcome to Sanskar Vidya Bhavan</span>
           <div className="h-[2px] w-4 bg-accent" />
         </div>
 
@@ -109,7 +109,7 @@ export default function Home() {
           >
             <div className="hidden lg:flex items-center justify-center gap-3 text-accent mb-2 w-full">
               <div className="h-[2px] w-8 bg-accent" />
-              <span className="font-black uppercase tracking-[.3em] text-sm whitespace-nowrap">Welcome to Sanskar Vidya Bhawan</span>
+              <span className="font-black uppercase tracking-[.3em] text-sm whitespace-nowrap">Welcome to Sanskar Vidya Bhavan</span>
               <div className="h-[2px] w-8 bg-accent" />
             </div>
 
@@ -118,17 +118,17 @@ export default function Home() {
             </h1>
 
             <p className="text-white/70 text-sm lg:text-xl max-w-2xl leading-relaxed font-medium px-4 lg:px-0">
-              Sanskar Vidya Bhawan provides a world-class educational environment in Bhinmal, fostering academic excellence and holistic growth since 2023.
+              Sanskar Vidya Bhavan provides a world-class educational environment in Bhinmal, fostering academic excellence and holistic growth since 2009.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 w-full sm:w-auto px-4 lg:px-0">
-              <button className="w-full sm:w-auto bg-accent text-primary px-10 py-4 lg:py-5 rounded-full font-black text-[11px] lg:text-sm shadow-2xl hover:bg-white transition-all uppercase tracking-widest flex items-center justify-center gap-3">
+              <Link href="/about" className="w-full sm:w-auto bg-accent text-primary px-10 py-4 lg:py-5 rounded-full font-black text-[11px] lg:text-sm shadow-2xl hover:bg-white transition-all uppercase tracking-widest flex items-center justify-center gap-3">
                 About More
                 <ArrowRight size={18} />
-              </button>
-              <button className="w-full sm:w-auto border-2 border-white/20 text-white px-10 py-4 lg:py-5 rounded-full font-black text-[11px] lg:text-sm backdrop-blur-md hover:bg-white hover:text-primary transition-all uppercase tracking-widest">
+              </Link>
+              <Link href="/academics" className="w-full sm:w-auto border-2 border-white/20 text-white px-10 py-4 lg:py-5 rounded-full font-black text-[11px] lg:text-sm backdrop-blur-md hover:bg-white hover:text-primary transition-all uppercase tracking-widest flex items-center justify-center gap-3">
                 Learn More
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -187,14 +187,18 @@ export default function Home() {
           <div className="lg:hidden w-[100vw] relative -mx-4 px-0 overflow-hidden py-2">
             <div className="animate-custom-marquee gap-3 pr-3" style={{ animationDuration: '10s' }}>
               {[
-                { title: "Scholarships", desc: "Merit-based support", icon: Award },
-                { title: "Top Lecturers", desc: "Expert educators", icon: Users },
-                { title: "Book Library", desc: "Thousands of books", icon: BookOpen },
-                { title: "Affordable Price", desc: "Flexible structures", icon: BookOpen },
-                { title: "Scholarships", desc: "Merit-based support", icon: Award },
-                { title: "Top Lecturers", desc: "Expert educators", icon: Users },
-                { title: "Book Library", desc: "Thousands of books", icon: BookOpen },
-                { title: "Affordable Price", desc: "Flexible structures", icon: BookOpen },
+                { title: "Top Expert Educators", desc: "Best faculty", icon: Users },
+                { title: "Award Winner", desc: "Recognized excellence", icon: Award },
+                { title: "Affordable Price", desc: "Quality education", icon: BookOpen },
+                { title: "High Quality Education", desc: "Modern curriculum", icon: BookOpen },
+                { title: "Friendly Environment", desc: "Safe campus", icon: Users },
+                { title: "Holistic Growth", desc: "Overall development", icon: Star },
+                { title: "Top Expert Educators", desc: "Best faculty", icon: Users },
+                { title: "Award Winner", desc: "Recognized excellence", icon: Award },
+                { title: "Affordable Price", desc: "Quality education", icon: BookOpen },
+                { title: "High Quality Education", desc: "Modern curriculum", icon: BookOpen },
+                { title: "Friendly Environment", desc: "Safe campus", icon: Users },
+                { title: "Holistic Growth", desc: "Overall development", icon: Star },
               ].map((feature, i) => (
                 <div key={i} className="min-w-[200px] bg-white p-3 rounded-[18px] shadow-sm border border-primary/5 flex items-center gap-3">
                   <div className="w-10 h-10 flex-shrink-0 bg-accent/10 rounded-xl flex items-center justify-center text-primary">
@@ -225,7 +229,7 @@ export default function Home() {
               Welcome to our <span className="text-accent">Campus</span>
             </h2>
             <p className="text-primary/70 max-w-2xl text-sm lg:text-lg leading-relaxed font-bold">
-              Experience the world-class infrastructure and vibrant student life at Sanskar Vidya Bhawan.
+              Experience the world-class infrastructure and vibrant student life at Sanskar Vidya Bhavan.
               Watch our exclusive campus tour to see where bright futures begin.
             </p>
           </div>
@@ -266,7 +270,7 @@ export default function Home() {
             {infiniteClass10.map((student, i) => (
               <div key={`10th-${i}`} className="bg-white p-2 pr-4 rounded-full shadow border-t-2 border-primary border flex items-center gap-3 min-w-[200px] group hover:-translate-y-1 transition-transform cursor-pointer">
                 <div className="w-10 h-10 rounded-full overflow-hidden bg-primary/5 border border-accent relative shrink-0">
-                  <Image src={student.image} alt={student.name} fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <img src={student.image} alt={student.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="flex flex-col items-start w-full">
                   <span className="font-black text-primary text-xs leading-tight uppercase line-clamp-1 w-full truncate">{student.name}</span>
@@ -290,7 +294,7 @@ export default function Home() {
             {infiniteClass8.map((student, i) => (
               <div key={`8th-${i}`} className="bg-white p-2 pl-4 rounded-full shadow border-t-2 border-secondary flex items-center gap-3 min-w-[200px] group hover:-translate-y-1 transition-transform cursor-pointer text-left">
                 <div className="w-10 h-10 rounded-full overflow-hidden bg-secondary/10 border border-secondary relative shrink-0">
-                  <Image src={student.image} alt={student.name} fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <img src={student.image} alt={student.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="flex flex-col items-start w-full">
                   <span className="font-black text-primary text-xs leading-tight uppercase line-clamp-1 w-full truncate">{student.name}</span>
@@ -314,7 +318,7 @@ export default function Home() {
             {infiniteClass5.map((student, i) => (
               <div key={`5th-${i}`} className="bg-white p-2 pr-4 rounded-full shadow border-t-2 border-primary flex items-center gap-3 min-w-[200px] group hover:-translate-y-1 transition-transform cursor-pointer">
                 <div className="w-10 h-10 rounded-full overflow-hidden bg-accent/10 border border-primary relative shrink-0">
-                  <Image src={student.image} alt={student.name} fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <img src={student.image} alt={student.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="flex flex-col items-start w-full">
                   <span className="font-black text-primary text-xs leading-tight uppercase line-clamp-1 w-full truncate">{student.name}</span>
@@ -376,14 +380,18 @@ export default function Home() {
           <div className="lg:hidden flex overflow-hidden w-[100vw] relative -mx-4 px-0 mask-edges py-2">
             <div className="animate-custom-marquee gap-4 px-4 hover:[animation-play-state:paused]">
               {[
-                { label: "Total Courses", value: "500+", icon: BookOpen },
-                { label: "Our Students", value: "1900+", icon: Users },
-                { label: "Skilled Lecturers", value: "750+", icon: Award },
-                { label: "Win Awards", value: "30+", icon: Star },
-                { label: "Total Courses", value: "500+", icon: BookOpen },
-                { label: "Our Students", value: "1900+", icon: Users },
-                { label: "Skilled Lecturers", value: "750+", icon: Award },
-                { label: "Win Awards", value: "30+", icon: Star },
+                { label: "Our Students", value: "350+", icon: Users },
+                { label: "Teachers", value: "15+", icon: Users },
+                { label: "Award Win", value: "10+", icon: Award },
+                { label: "Pass Ratio", value: "97.6%", icon: BookOpen },
+                { label: "Teachers", value: "Qualified", icon: Users },
+                { label: "Events", value: "Cultural", icon: ImageIcon },
+                { label: "Our Students", value: "350+", icon: Users },
+                { label: "Teachers", value: "15+", icon: Users },
+                { label: "Award Win", value: "10+", icon: Award },
+                { label: "Pass Ratio", value: "97.6%", icon: BookOpen },
+                { label: "Teachers", value: "Qualified", icon: Users },
+                { label: "Events", value: "Cultural", icon: ImageIcon },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-3 bg-white border border-primary/10 shadow-sm px-4 py-3 rounded-[20px] w-48 shrink-0">
                   <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary shrink-0">
@@ -399,12 +407,14 @@ export default function Home() {
           </div>
 
           {/* Desktop Classic Grid */}
-          <div className="hidden lg:grid grid-cols-4 gap-12 pb-0">
+          <div className="hidden lg:grid grid-cols-3 xl:grid-cols-6 gap-8 pb-0">
             {[
-              { label: "Total Courses", value: "500+", icon: BookOpen },
-              { label: "Our Students", value: "1900+", icon: Users },
-              { label: "Skilled Lecturers", value: "750+", icon: Award },
-              { label: "Win Awards", value: "30+", icon: Star },
+                { label: "Our Students", value: "350+", icon: Users },
+                { label: "Teachers", value: "15+", icon: Users },
+                { label: "Award Win", value: "10+", icon: Award },
+                { label: "Pass Ratio", value: "97.6%", icon: BookOpen },
+                { label: "Teachers", value: "Qualified", icon: Users },
+                { label: "Events", value: "Cultural", icon: ImageIcon },
             ].map((stat, i) => (
               <div key={i} className="flex flex-col items-center gap-4 text-primary text-center group">
                 <div className="w-20 h-20 bg-primary/5 rounded-3xl flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">

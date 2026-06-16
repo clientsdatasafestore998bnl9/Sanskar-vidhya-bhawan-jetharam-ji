@@ -437,26 +437,21 @@ export default function Home() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4">
           <button
             onClick={() => setShowVideoModal(false)}
-            className="absolute top-6 right-6 lg:top-10 lg:right-10 text-white/50 hover:text-white transition-colors p-2 bg-white/10 rounded-full"
+            className="absolute top-6 right-6 lg:top-10 lg:right-10 text-white/50 hover:text-white transition-colors p-2 bg-white/10 rounded-full z-50"
           >
             <X size={32} />
           </button>
 
-          <div className="w-full max-w-6xl aspect-video rounded-3xl lg:rounded-[40px] overflow-hidden shadow-premium border-2 border-white/10 bg-black relative">
-            <div className="absolute inset-0 flex items-center justify-center -z-10">
-              <div className="w-10 h-10 border-4 border-accent border-t-transparent rounded-full animate-spin" />
+          <div className="w-full max-w-4xl aspect-video rounded-3xl lg:rounded-[40px] overflow-hidden shadow-premium border border-white/10 bg-[#0a0a0a] relative flex flex-col items-center justify-center text-center p-8">
+            <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-6">
+              <Play className="w-8 h-8 text-white/30 ml-2" />
             </div>
-            {/* Note: Change the src link below to your actual YouTube link embed! */}
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-              title="School Campus Tour"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="relative z-10"
-            />
+            <h3 className="text-2xl lg:text-4xl font-black text-white tracking-tight mb-4">
+              Tour Temporarily Unavailable
+            </h3>
+            <p className="text-white/60 text-sm lg:text-lg max-w-lg font-medium leading-relaxed">
+              The 360° campus tour video has been temporarily removed by the school administration for updates. Please check back later.
+            </p>
           </div>
         </div>
       )}
